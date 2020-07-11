@@ -8,6 +8,9 @@ import javax.swing.JLayeredPane;
 import java.awt.Color;
 import java.awt.SystemColor;
 import java.awt.Font;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextPane;
 import javax.swing.JPasswordField;
@@ -54,13 +57,11 @@ public class Fame1 {
 		frame.getContentPane().setLayout(null);
 		
 		JLayeredPane Image_login = new JLayeredPane();
-		Image_login.setBounds(10, 27, 294, 243);
+		Image_login.setBounds(0, 27, 294, 243);
 		frame.getContentPane().add(Image_login);
 		
-		JLabel lblNewLabel_1 = new JLabel("Image of jewellary");
-		lblNewLabel_1.setForeground(Color.WHITE);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 23));
-		lblNewLabel_1.setBounds(26, 49, 222, 97);
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setBounds(85, 47, 46, 93);
 		Image_login.add(lblNewLabel_1);
 		
 		JLayeredPane login_panel = new JLayeredPane();
@@ -111,13 +112,15 @@ public class Fame1 {
 		login_panel.add(passwordField);
 		
 		JLayeredPane logo_panel = new JLayeredPane();
-		logo_panel.setBounds(333, 34, 283, 69);
+		logo_panel.setBounds(332, 11, 283, 116);
 		frame.getContentPane().add(logo_panel);
 		
-		JLabel lblNewLabel = new JLabel("Nanak Jewellers(Logo)");
+		JLabel lblNewLabel = new JLabel("");
+		Image img = new ImageIcon(this.getClass().getResource("/logo_nanak.jpg")).getImage();
+		lblNewLabel.setIcon(new ImageIcon(img));
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		lblNewLabel.setBounds(0, 11, 272, 47);
+		lblNewLabel.setBounds(89, 0, 154, 105);
 		logo_panel.add(lblNewLabel);
 	}
 }
