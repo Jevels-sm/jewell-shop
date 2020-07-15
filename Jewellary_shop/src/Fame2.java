@@ -148,7 +148,7 @@ public class Fame2 extends JFrame {
 		JPanel panel_2 = new JPanel();
 		panel_2.setForeground(Color.BLACK);
 		panel_2.setBackground(Color.ORANGE);
-		contentPane.add(panel_2, "cell 0 4 2 2,alignx right");
+		contentPane.add(panel_2, "cell 0 4,alignx right");
 		
 		JLabel lblNewLabel_3 = new JLabel("SUPPLIER");
 		panel_2.add(lblNewLabel_3);

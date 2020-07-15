@@ -60,10 +60,6 @@ public class Fame1 {
 		Image_login.setBounds(0, 27, 294, 243);
 		frame.getContentPane().add(Image_login);
 		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setBounds(85, 47, 46, 93);
-		Image_login.add(lblNewLabel_1);
-		
 		JLayeredPane login_panel = new JLayeredPane();
 		login_panel.setBounds(314, 108, 302, 162);
 		frame.getContentPane().add(login_panel);
@@ -86,14 +82,40 @@ public class Fame1 {
 		lblPassword.setBounds(10, 77, 68, 17);
 		login_panel.add(lblPassword);
 		
+		
+		////////////////////////////////////
+		//Login button
+		///////////////////////////////////
+		
+		
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String username=textUserName.getText();
 				String password=passwordField.getText();
+				try {
+					String url="jdbc:mysql://24.196.52.166:3306/jewell_shop";
+					String driver="com.mysql.jdbc.Driver";
+					String uname="Tiki";
+					String pass="tiki";
+					String query="select userName from login where id=1";
+					Class.forName(driver);
+					Connection con = DriverManager.getConnection(url,uname,pass);
+					Statement st = con.createStatement();
+					ResultSet rs = st.executeQuery(query);
+					rs.next();
+					String name=rs.getString("userName");
+					System.out.println("Yess");
+				}
+				catch(Exception o) {System.out.println("No"+o);} 
+				
 				
 			}
 		});
+		
+		
+		
+		
 		btnLogin.setBackground(Color.WHITE);
 		btnLogin.setBounds(88, 128, 68, 23);
 		login_panel.add(btnLogin);
@@ -101,6 +123,8 @@ public class Fame1 {
 		JButton btnClose = new JButton("Close");
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Fame2 frame = new Fame2();
+				frame.setVisible(true);
 			}
 		});
 		btnClose.setBackground(Color.WHITE);
