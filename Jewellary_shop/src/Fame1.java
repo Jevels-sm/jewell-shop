@@ -5,6 +5,8 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
 import java.awt.SystemColor;
 import java.awt.Font;
@@ -22,7 +24,6 @@ public class Fame1 {
 	private JFrame frame;
 	private JTextField textUserName;
 	private JPasswordField passwordField;
-
 	/**
 	 * Launch the application.
 	 */
@@ -42,8 +43,10 @@ public class Fame1 {
 	/**
 	 * Create the application.
 	 */
+	Connection connection=null;
 	public Fame1() {
 		initialize();
+		connection=mysql.dbconnector();
 	}
 
 	/**
@@ -94,20 +97,22 @@ public class Fame1 {
 				String username=textUserName.getText();
 				String password=passwordField.getText();
 				try {
-					String url="jdbc:mysql://24.196.52.166:3306/jewell_shop";
-					String driver="com.mysql.jdbc.Driver";
-					String uname="Tiki";
-					String pass="tiki";
-					String query="select userName from login where id=1";
-					Class.forName(driver);
-					Connection con = DriverManager.getConnection(url,uname,pass);
-					Statement st = con.createStatement();
+					String query="select * from login where id=1";
+					Statement st = connection.createStatement();
 					ResultSet rs = st.executeQuery(query);
 					rs.next();
-					String name=rs.getString("userName");
-					System.out.println("Yess");
+					String namedb=rs.getString("userName");
+					String passdb=rs.getString("password");
+					if(username.equals(namedb) && password.equals(passdb)) 
+					{
+						JOptionPane.showMessageDialog(frame,"Valid info","Alert",JOptionPane.WARNING_MESSAGE);
+					}
+					else
+					{
+						JOptionPane.showMessageDialog(frame,"Username or password is invalid","Alert",JOptionPane.WARNING_MESSAGE);
+					}
 				}
-				catch(Exception o) {System.out.println("No"+o);} 
+				catch(Exception o) {System.out.println(o);} 
 				
 				
 			}
