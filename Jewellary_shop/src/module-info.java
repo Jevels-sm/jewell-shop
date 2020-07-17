@@ -1,2 +1,0 @@
-module Jewellary_shop {
-}
